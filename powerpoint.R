@@ -1,3 +1,4 @@
+# layout_summary
 setwd('C:/Users/Lenovo/Documents/projects/OfficeR')
 if(!require(officer)) install.packages('officer')
 library(officer)
@@ -26,22 +27,51 @@ doc = officer::read_pptx()
 # doc = officer::ph_with(doc, "I am going to be left", location = ph_location_left())
 # doc = officer::ph_with(doc, "I am going to be right", location = ph_location_right())
 
-# Tables and Locations
-emp = data.frame(
-  name = c('john', 'jenny', 'margareth'),
-  salary = c(2000, 4300, 5000)
-)
+# # Tables and Locations
+# emp = data.frame(
+#   name = c('john', 'jenny', 'margareth'),
+#   salary = c(2000, 4300, 5000)
+# )
+# 
+# doc = add_slide(doc, layout = 'Title and Content', master = 'Office Theme')
+# doc = on_slide(doc, index = 1)
+# 
+# doc = ph_with(doc, emp, location = ph_location(
+#   left = 0.5,
+#   top = 0.5,
+#   width = 4,
+#   height = 3.5,
+#   rotation = 0,
+#   bg = "#333333"
+# ))
 
-doc = add_slide(doc, layout = 'Title and Content', master = 'Office Theme')
+# # Text Formatting
+# paragraph = fpar(
+#   ftext("Here is the first paragraph...", 
+#         fp_text(color = '#48a3d1', font.size = 25)
+#   ),
+#   ftext('so i am the second part of this paragraph',
+#         fp_text(color = 'white', font.size = 12, bold = TRUE)
+#   )
+# )
+# 
+# loc = ph_location(
+#   left = 2,
+#   top = 1,
+#   width = 3,
+#   height = 2,
+#   rotation = 30,
+#   bg = "#7905a5"
+# )
+# 
+# doc = ph_with(doc, paragraph, loc)
+
+doc = officer::read_pptx('template.pptx')
 doc = on_slide(doc, index = 1)
+doc = ph_with(doc, "Hello man", location = ph_location_type(type = 'title'))
 
-doc = ph_with(doc, emp, location = ph_location(
-  left = 0.5,
-  top = 0.5,
-  width = 4,
-  height = 3.5,
-  rotation = 0,
-  bg = "#333333"
-))
+doc 
+
+# doc = add_slide(doc, layout = 'Slide de Título', 'Tema do Office')
 
 print(doc, 'document.pptx')
