@@ -1,0 +1,12 @@
+# RStudio
+.RData
+.Rhistory
+
+# Office
+*.pptx
+*.docx
+*.xlsx
+*.ppt
+*.doc
+*.xls
+~$*
